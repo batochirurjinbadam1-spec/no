@@ -1,0 +1,13 @@
+.newy{
+background-color: #BFDDF0;
+
+border:    #8CC0EB,solid,1px;
+border-radius: 30px;
+}
+.color{
+width: 100px;
+height: 20px;
+background-color: #FFEBCC;
+border-radius: 50px;
+border: black solid 1px;
+}

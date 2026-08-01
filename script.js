@@ -1,13 +1,14 @@
-const container=document.querySelector(".container")
-const display=document.querySelector(".but")
-
+const container = document.querySelector(".button-container");
+const display = document.querySelector(".display");
 
 const symbols = ["x", "AC", "...", "/", 7, 8, 9, "*", 4, 5, 6, "-", 1, 2, 3, "+", "...", 0, ".", "="];
-operators=["-","+","/"]
+
+const operators=["*","-","+","/","...","."]
+
 symbols.map((element) => {
     const newBtn = document.createElement("button");
     newBtn.textContent = element;
-
+newBtn.classList=("newy")
     container.appendChild(newBtn);
 
     newBtn.addEventListener("click", function () {
@@ -19,9 +20,14 @@ symbols.map((element) => {
         } else if (element === "=") {
             calculate();
         } 
-        else if(operators.includes(element)){}
-            else {
-            display.textContent = display.textContent + element;
+
+        else {const last=display.textContent.slice(-1);
+
+            
+            if(operators.includes(element) && operators.includes(last)){
+                  display.textContent.slice(0,-1)+element;return;
+                }
+                display.textContent = display.textContent + element;
         }
     });
 });
@@ -41,13 +47,9 @@ function calculate() {
             result = values[i - 1] / values[i + 1];
             values.splice(i - 1, 3, result);
             i--;
+        } else {
+            i++;
         }
-
-        
-        else  {
-            i++
-        }
-
     }
 
     let total = Number(values[0]);
@@ -60,22 +62,3 @@ function calculate() {
     }
     display.textContent = total;
 }
-
-// const symbols = ["x", "AC", "...", "/", 7, 8, 9, "*", 4, 5, 6, "-", 1, 2, 3, "+", "...", 0, ".", "="];
-// const numbers=[7,6,8,9,0,1,2,3,4,5];
-// symbols.map((element)=>{
-//     const Newbtn=document.createElement("button")
-//     Newbtn.textContent=element; 
-//       container.appendChild(Newbtn)
-//     Newbtn. addEventListener("click",function(){
-//     //     numbers.textContent=Number
-//     //     const value=Number(Newbtn.textContent)
-//     //  if(numbers.includes(value)){
-//     //        display.textContent=Newbtn.textContent
-
-//     //   }
-      
-//     })
-
-// })
-
